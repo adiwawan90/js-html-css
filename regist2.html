@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: royalblue;
+            background: linear-gradient(15deg, violet, 40%, #673AB7 60%);
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 50px auto;
+            background-color: black;
+            color: white;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid white;
+            padding: 5px;
+        }
+
+        th {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        td {
+            font-size: 12;
+            color: white;
+        }
+
+        td a {
+            cursor: pointer;
+        }
+
+        input#entry {
+            margin-bottom: 20px;
+        }
+    </style>
+
+    <title>Regist Form</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card" style="max-width: 35rem; margin: auto; margin-top: 20px;">
+            <div class="card-content">
+                <form id="task-form" class="col mb2" action="" onsubmit="return false">
+                    <h3 class="card-title">Registration Form</h3>
+                    <fieldset>
+                        <label for="name2" class="mb-0">Nama Lengkap</label>
+                        <div class="row mb-1">
+                            <div class="col-lg-12">
+                                <input type="text" name="name" id="name" class="form-control" required=""
+                                    placeholder="Nama Lengkap">
+                            </div>
+                        </div>
+                        <label for="email2" class="mb-0">Jenis Kelamin</label>
+                        <div class="row mb-1">
+                            <div class="col-lg-12">
+                                <input type="text" name="jenkel" id="jenkel" class="form-control" required=""
+                                    placeholder="Jenis Kelamin">
+                            </div>
+                        </div>
+                        <label for="email2" class="mb-0">No. Hp</label>
+                        <div class="row mb-1">
+                            <div class="col-lg-12">
+                                <input type="number" name="telp" id="telp" class="form-control" required=""
+                                    placeholder="No. hp">
+                            </div>
+                        </div>
+                        <label for="message2" class="mb-0">Alamat</label>
+                        <div class="row mb-1">
+                            <div class="col-lg-12">
+                                <textarea rows="6" name="alamat" id="alamat" class="form-control"
+                                    required=""></textarea>
+                            </div>
+                        </div>
+                        <input type="submit" id="entry" class="btn btn-primary" name="Submit" value=" Submit"
+                            onclick="myCreateFunction()">
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- batas coba -->
+    <table id="myTable">
+        <tr>
+            <th>#</th>
+            <th>Nama Lengkap</th>
+            <th>Jenis Kelamin</th>
+            <th>No. Hp</th>
+            <th>Alamat</th>
+            <th>Action</th>
+        </tr>
+    </table>
+
+    <!-- <script src="form.js"></script> -->
+    <script>
+        function myCreateFunction(e) {
+            var numRow = document.getElementById('myTable');
+            var rowCnt = numRow.rows.length
+
+            let name = document.getElementById('name').value;
+            let jenkel = document.getElementById('jenkel').value;
+            let telp = document.getElementById('telp').value;
+            let alamat = document.getElementById('alamat').value;
+
+
+            var table = document.getElementById("myTable");
+            var row = table.insertRow(rowCnt);
+
+            if (!name || !jenkel || !telp || !alamat) {
+                alert('Please fill all boxes.');
+                return
+            }
+
+            var cell1 = row.insertCell(0)
+            var cell2 = row.insertCell(1)
+            var cell3 = row.insertCell(2)
+            var cell4 = row.insertCell(3)
+            var cell5 = row.insertCell(4)
+            var cell6 = row.insertCell(5)
+
+            cell1.innerHTML = rowCnt;
+            cell2.innerHTML = name;
+            cell3.innerHTML = jenkel;
+            cell4.innerHTML = telp;
+            cell5.innerHTML = alamat;
+            cell6.innerHTML = '<center><a class="delete" onclick=removeRow(this) >X</a></center>';
+
+            e.preventDefault();
+
+        }
+
+        function removeRow(oButton) {
+            var empTab = document.getElementById('myTable');
+            empTab.deleteRow(oButton + 1);
+        }
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

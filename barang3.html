@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #c5f5f3;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 50px auto;
+            background-color: black;
+            color: white;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid white;
+            padding: 5px;
+        }
+
+        th {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        td {
+            font-size: 12;
+            color: white;
+        }
+
+        td a {
+            cursor: pointer;
+        }
+
+        .shadow {
+            box-shadow:
+                0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+                0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+                0 12.5px 10px rgba(0, 0, 0, 0.06),
+                0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+                0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+                0 100px 80px rgba(0, 0, 0, 0.12);
+        }
+
+        h5 {
+            border-collapse: collapse;
+            width: 50%;
+            height: 40px;
+            margin: 50px auto;
+            text-align: left;
+            padding-top: 7px;
+            padding-left: 7px;
+            border-radius: 10px;
+            background-color: rgb(99, 207, 224);
+        }
+
+        input#entry {
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            margin-top: 15px;
+        }
+    </style>
+
+    <title>Exercise 3</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card shadow" style="max-width: 35rem; margin: auto; margin-top: 20px;">
+            <div class="card-content">
+                <form id="task-form" class="col mb2" action="" onsubmit="return false">
+                    <h3 class="card-title">FORM TAMBAH DATA PRODUK</h3>
+                    <fieldset>
+                        <label for="name2" class="mb-0">Nama Produk</label>
+                        <div class="row mb-1">
+                            <div class="col-lg-12">
+                                <input type="text" name="name" id="name" class="form-control" required=""
+                                    placeholder="Nama Barang">
+                            </div>
+                        </div>
+                        <label for="email2" class="mb-0">Harga Produk</label>
+                        <div class="row mb-1">
+                            <div class="col-lg-12">
+                                <input type="number" name="harga" id="harga" class="form-control" required=""
+                                    placeholder="Harga">
+                            </div>
+                        </div>
+                        <label for="email2" class="mb-0">Kategori Produk</label>
+                        <div class="row mb-1">
+                            <div class="col-lg-12">
+                                <input type="text" name="kategori" id="kategori" class="form-control" required=""
+                                    placeholder="Kategori">
+                            </div>
+                        </div>
+                        <input type="submit" id="entry" class="btn btn-primary" name="Submit" value=" Submit"
+                            onclick="myCreateFunction()">
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- <h5 class="center-align">Total Harga: <span id="total-harga">0</span></h5> -->
+    <!-- batas coba -->
+    <table id="myTable">
+        <tr>
+            <th>#</th>
+            <th>Nama Produk</th>
+            <th>Harga Produk</th>
+            <th>Kategori Produk</th>
+            <th>Aksi</th>
+        </tr>
+    </table>
+
+    <!-- <script src="form.js"></script> -->
+    <script>
+        function myCreateFunction(e) {
+            var numRow = document.getElementById('myTable');
+            var rowCnt = numRow.rows.length
+            // console.log(rowCnt)
+
+            let name = document.getElementById('name').value;
+            let kategori = document.getElementById('kategori').value;
+            let harga = document.getElementById('harga').value;
+
+
+            var table = document.getElementById("myTable");
+            var row = table.insertRow(rowCnt);
+
+            if (!name || !kategori || !harga) {
+                alert('Please fill all boxes.');
+                return
+            }
+
+            var cell1 = row.insertCell(0)
+            var cell2 = row.insertCell(1)
+            var cell3 = row.insertCell(2)
+            var cell4 = row.insertCell(3)
+            var cell5 = row.insertCell(4)
+
+            cell1.innerHTML = rowCnt;
+            cell2.innerHTML = name;
+            cell3.innerHTML = 'Rp. ' + harga;
+            cell4.innerHTML = kategori;
+            cell5.innerHTML = '<center><a class="delete" onclick=removeRow(this) >X</a></center>';
+            numRow++
+
+            var subTotal = 0;
+            var total = document.getElementById('total-harga');
+            total.innerHTML = 'RP. ' + parseInt(subTotal + harga)
+            // console.log(total.innerHTML)
+
+
+            // e.preventDefault();
+        }
+
+        function removeRow(oButton) {
+            var empTab = document.getElementById('myTable');
+            empTab.deleteRow(oButton + 1);
+        }
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

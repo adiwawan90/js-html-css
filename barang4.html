@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #c5f5f3;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 50px auto;
+            background-color: black;
+            color: white;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid white;
+            padding: 5px;
+        }
+
+        th {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        td {
+            font-size: 12;
+            color: white;
+        }
+
+        td a {
+            cursor: pointer;
+        }
+
+        .shadow {
+            box-shadow:
+                0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+                0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+                0 12.5px 10px rgba(0, 0, 0, 0.06),
+                0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+                0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+                0 100px 80px rgba(0, 0, 0, 0.12);
+        }
+
+        h5 {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 50px auto;
+            background-color: rgb(145, 42, 42);
+        }
+
+        h3 {
+            margin-left: 17px;
+            margin-top: 25px;
+            margin-bottom: -35px;
+            font-weight: bold;
+        }
+
+        table.input {
+            background-color: white;
+            width: 500px;
+        }
+
+        table.input label {
+
+            color: black;
+        }
+
+        h5 {
+            border-collapse: collapse;
+            width: 50%;
+            height: 40px;
+            margin: 50px auto;
+            text-align: left;
+            padding-top: 7px;
+            padding-left: 7px;
+            border-radius: 10px;
+            background-color: rgb(99, 207, 224);
+        }
+
+        input#entry {
+            margin-bottom: -15px;
+        }
+    </style>
+
+    <title>Exercise 4</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card shadow" style="max-width: 35rem; margin: auto; margin-top: 20px;">
+            <div class="card-content">
+                <!-- start -->
+                <h3 class="card-title col mb5">FORM TAMBAH DATA PRODUK</h3>
+                <!-- end -->
+                <table class="input">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label for="name2" class="mb-0">Nama Produk</label>
+                                <div class="row mb-1">
+                                    <div class="col-lg-12">
+                                        <input id="name" type="text" name="name" class="form-control"
+                                            placeholder="Nama Produk">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label for="email2" class="mb-0">Harga Produk</label>
+                                <div class="row mb-1">
+                                    <div class="col-lg-12">
+                                        <input type="number" id="harga" name="harga" class="form-control"
+                                            placeholder="Harga Produk">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="email2" class="mb-0">Kategori Produk</label>
+                                <div class="row mb-1">
+                                    <div class="col-lg-12">
+                                        <input id="kategori" type="text" name="kategori" class="form-control"
+                                            required="" placeholder="Kategori Produk">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="email2" class="mb-0">Jum Pesan</label>
+                                <div class="row mb-1">
+                                    <div class="col-lg-12">
+                                        <input type="number" id="jml_pesan" name="jml_pesan" class="form-control"
+                                            placeholder="Jumlah Pesanan">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="left"><input type="submit" id="entry" class="btn btn-primary"
+                                    name="Submit" value=" Submit" onclick="tambahItem('tb_out')"></td>
+                            <!-- <td><input onclick="hapusRow()" type="button" value="CANCEL" /></td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <h5 id="tb_total" style="    margin-top: 35px;
+    margin-bottom: -40px;">Total Harga: <span id="hasil">0</span></h5>
+    <!-- batas coba -->
+    <table cellspacing="0" border="1" id="tb_out">
+        <tbody>
+            <tr>
+                <td>No</td>
+                <td>Nama Produk</td>
+                <td>Harga</td>
+                <td>Kategori Produk</td>
+                <td>Sub Tot</td>
+                <td>Aksi</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function tambahItem(idTabel) {
+
+            //menntukan tabel yang akan di update
+            var idtabel = document.getElementById(idTabel);
+            //membaca form isian
+            var name = document.getElementById('name').value;
+            var kategori = document.getElementById('kategori').value;
+            var harga_pesan = parseInt(document.getElementById('harga').value);
+            var jml_pesan = parseInt(document.getElementById('jml_pesan').value);
+            // var jml_pesan = 1
+            var subtot = harga_pesan * jml_pesan;
+
+            if (!name || !harga_pesan || !kategori || !jml_pesan) {
+                alert('Please fill all boxes.');
+                return
+            }
+
+            //menambah baris pada table
+            var jumBaris = idtabel.rows.length;
+            var baris = idtabel.insertRow(jumBaris);
+            //mengisi setiap kolom dengan isian form
+            var kolom1 = baris.insertCell(0);
+            var kolom2 = baris.insertCell(1);
+            var kolom3 = baris.insertCell(2);
+            var kolom4 = baris.insertCell(3);
+            var kolom5 = baris.insertCell(4);
+            var kolom6 = baris.insertCell(5);
+
+            kolom1.innerHTML = jumBaris;
+            kolom2.innerHTML = name;
+            kolom3.innerHTML = 'Rp. ' + harga_pesan;
+            kolom4.innerHTML = kategori;
+            kolom5.innerHTML = 'Rp. ' + subtot;
+            kolom6.innerHTML =
+                '<input type="submit" value="edit" class="btn btn-info" onclick="info()">&nbsp;<input type="submit" value="delete" class="btn btn-danger" onclick="hapusRow()"> ';
+            //set from isina menjadi kosong  
+            document.getElementById('name').value = '';
+            document.getElementById('kategori').value = '';
+            document.getElementById('harga').value = '';
+            document.getElementById('jml_pesan').value = '';
+
+            var total = 0;
+            var table = document.getElementById('tb_out');
+            for (var r = 1; r <= table.rows.length - 1; r++) {
+                var x = parseInt((document.getElementById('tb_out').rows[r].cells[4].innerHTML).replace(
+                    'Rp. ', ''));
+                console.log('yang atas ' + (document.getElementById('tb_out').rows[r].cells[4].innerHTML).replace(
+                    'Rp. ', ''))
+                // console.log(document.getElementById('tb_out').rows[r].cells[4].innerHTML)
+                total = total + x;
+                document.getElementById('hasil').innerHTML = 'Rp. ' + total;
+            }
+        }
+
+        function hapusRow() {
+
+            var tbl = document.getElementById('tb_out');
+            var lastRow = tbl.rows.length;
+            if (lastRow > 1) {
+                tbl.deleteRow(lastRow - 1);
+                var total = 0;
+                var table = document.getElementById('tb_out');
+                for (var r = 1; r <= table.rows.length - 1; r++) {
+                    var x = parseInt((document.getElementById('tb_out').rows[r].cells[4].innerHTML).replace(
+                        'Rp. ', ''));
+                    // console.log('yang hapus ' + x)
+                    total = total + x;
+                    document.getElementById('hasil').innerHTML = 'Rp. ' + total;
+                }
+            } else if (lastRow = 0) {
+                document.getElementById('hasil').innerHTML = '&nbsp;';
+            }
+        }
+
+        function info() {
+            return alert("Sorry you can't edit it.!")
+        }
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

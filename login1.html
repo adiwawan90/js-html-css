@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Login</title>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+</head>
+
+<body onload="document.form1.text1.focus()">
+    <style>
+        .iconmata {
+            position: relative;
+            z-index: 1;
+            left: 90%;
+            top: -30px;
+            cursor: pointer;
+        }
+
+        .iconemail {
+            position: relative;
+            z-index: 1;
+            left: 90%;
+            top: -30px;
+        }
+    </style>
+
+    <div class="container">
+        <div class="row">
+            <img src="login.png" alt="pict" style="float: left; padding-top: 95px;
+        margin-left: 150px;" />
+            <div class="col-md-offset-1 col-md-4">
+
+                <form name="form1" action="#">
+                    <h2><b>LOGIN</b></h2>
+                    <h5>Belum memiliki akun? <a href="#">Daftar</a></h5>
+                    <br />
+                    <div class="form-group">
+                        <!-- <label for="exampleInputEmail1">Email address</label> -->
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" />
+                        <span class="iconemail" onclick="show()">
+                            <i class="glyphicon glyphicon-envelope"></i>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="exampleInputPassword1">Password</label> -->
+                        <input type="password" class="form-control" id="password" placeholder="Password" />
+                        <span class="iconmata" onclick="show()">
+                            <i class="glyphicon glyphicon-eye-open"></i>
+                        </span>
+                    </div>
+                    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                        <input style="opacity: unset; pointer-events: visible;" type="checkbox"
+                            class="custom-control-input" id="customControlInline" />
+                        <label style="margin-left: 15px;    font-size: 12px;
+                        color: black;" class="custom-control-label" for="customControlInline">Ingat
+                            saya</label>
+                    </div>
+                    <br />
+                    <input type="submit" class="btn btn-primary" name="simpan" value="simpan"
+                        onclick="stringlength()" />
+                    <br /><br />
+                    <a href="#">Lupa Password?</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function show() {
+            var nilai = document.getElementById('password').type;
+            if (nilai == 'password') {
+                document.getElementById('password').type = 'text';
+                document.getElementById('iconmata').innerHTML =
+                    '<i class="glyphicon glyphicon-eye-close"></i>';
+            } else {
+                document.getElementById('password').type = 'password';
+                document.getElementById('iconmata').innerHTML =
+                    '<i class="glyphicon glyphicon-eye-open"></i>';
+            }
+        }
+
+        //   validate input pass length
+        function stringlength() {
+            var pass = document.getElementById('password').value;
+            var email = document.getElementById('exampleInputEmail1').value;
+            console.log(email);
+
+            if (email == '' && pass == '') {
+                alert(
+                    'Mohon untuk isi email dahulu :' +
+                    '\n' +
+                    'Mohon untuk isi passord dahulu :' +
+                    '\n'
+                );
+            } else if (email == '' || pass == '') {
+                alert('Mohon isi bagian yg kosong dahulu');
+            } else if (email == '' || pass.length <= 3) {
+                alert('Password kurang dari 4 karakter');
+            } else {
+                alert('Terimakasih ' + email + ' data sudah berhasil disimpan');
+                return true;
+            }
+
+            // if (pass.length <= 3) {
+            //     alert('Password kurang dari 4 karakter');
+            //     return false;
+            // } else {
+            //     alert('Terimakasih banyak');
+            //     return true;
+            // }
+        }
+    </script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
